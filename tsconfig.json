@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "module": "Node16",
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "target": "ES2017",
+    "sourceMap": true,
+    "outDir": "build",
+    "incremental": false,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "strict": true,
+    "allowJs": true,
+    "checkJs": false,
+    "moduleResolution": "Node16",
+  },
+  "exclude": [
+    "./build"
+  ]
+}
