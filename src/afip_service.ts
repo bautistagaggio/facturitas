@@ -16,24 +16,23 @@ export class afipService {
           }
         }
     
-        static async getInstance(): Promise<afipService> {
-            console.log('getInstance called');
-            if (!this.serviceInstance) {
-              console.log('Creating afipService');
-              this.serviceInstance = new afipService();
-              console.log('calling service.init()');
-              await this.serviceInstance.init();
-              console.log('calling service.init() complete');
-            } else {
-              console.log('serviceInstance is defined');
-            }
-            return this.serviceInstance;
-          }
+    static async getInstance(): Promise<afipService> {
+        console.log('getInstance called');
+        if (!this.serviceInstance) {
+          console.log('Creating afipService');
+          this.serviceInstance = new afipService();
+          console.log('calling service.init()');
+          await this.serviceInstance.init();
+          console.log('calling service.init() complete');
+        } else {
+          console.log('serviceInstance is defined');
+        }
+        return this.serviceInstance;
+      }
     
-
-    static async getComprobantes() {
+    static async getComprobantes(numero_de_comprobante: number, punto_de_venta: number, tipo_de_comprobante: number) {
         const handler = await afipService.getInstance();
-        const comprobantes = await apiHelper.getComprobanteByType(handler.afip);
+        const comprobantes = await apiHelper.getComprobanteByType(handler.afip, numero_de_comprobante,punto_de_venta, tipo_de_comprobante);
         return comprobantes;
     }
 
