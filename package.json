@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@afipsdk/afip.js": "^1.1.1",
+    "ajv": "^8.17.1",
     "express": "^4.19.2"
   },
   "devDependencies": {
@@ -20,5 +21,3 @@
     "typescript": "^5.5.3"
   }
 }
-
-

@@ -1,11 +1,12 @@
 import express, { Application, Request, Response } from 'express';
 import { afipService } from '../src/afip_service.js'
+import { validate } from './schemas/getComprobantesReqBody.js';
 
 const app: Application = express();
 const port: number = 3000;
 app.use(express.json());
 
-app.post('/comprobantes', async (req: Request, res: Response) => {
+app.post('/comprobantes', validateRequestBody, async (req: Request, res: Response) => {
 
   const params = req.body;
   console.log(params);
@@ -34,3 +35,13 @@ app.post('/comprobantes', async (req: Request, res: Response) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+function validateRequestBody(req: Request, res: Response) {
+  const valid = validate(req.body);
+  if (!valid) {
+      return res.status(400).json({
+          message: 'Invalid request data',
+          errors: validate.errors,
+      });
+  }
+}
